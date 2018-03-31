@@ -45,13 +45,13 @@ class Indroduce extends React.Component {
             style={{ marginTop: 10 }}
           >
             <Icon className="mail outline" />
-            chengjifeng0215@163.com
+            <span>chengjifeng0215@163.com</span>
           </Card.Content>
           <Card.Content
             style={{ marginTop: 10 }}
           >
             <Icon className="google" />
-            chengjifeng0215@gmail.com
+            <span>chengjifeng0215@gmail.com</span>
           </Card.Content>
         </Card.Content>
       </Card>

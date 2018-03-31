@@ -61,13 +61,13 @@ const FixedMenu = () => (
 );
 
 class BasicLayout extends Component {
-  onShow = () => {
+  onShow = () => { // eslint-disable-line
     this.props.dispatch({
       type: 'menu/showFixedMenu',
     });
   }
 
-  onHide = () => {
+  onHide = () => { // eslint-disable-line
     this.props.dispatch({
       type: 'menu/hideFixedMenu',
     });
@@ -86,12 +86,6 @@ class BasicLayout extends Component {
           <div
             className={styles.bgImage}
           >
-            {/* <Header
-              as="h1"
-              textAlign="center"
-              style={{ marginTop: '3em' }}
-            >
-            </Header> */}
             <Header
               as="h1"
               textAlign="center"
