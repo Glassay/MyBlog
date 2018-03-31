@@ -31,7 +31,14 @@ import React from 'react';
 import marked from 'marked';
 import highlight from 'highlight.js';
 import { connect } from 'dva';
-import { Card, Header, Image, Label, Button, Icon } from 'semantic-ui-react';
+import {
+  Card,
+  Header,
+  Image,
+  Label,
+  Button,
+  Divider,
+} from 'semantic-ui-react';
 
 import styles from './ArticleInfo.less';
 import '../../../node_modules/highlight.js/styles/atom-one-dark.css';
@@ -45,6 +52,9 @@ class ArticleInfo extends React.Component {
     marked.setOptions({
       highlight: code => highlight.highlightAuto(code).value,
     });
+  }
+  componentDidMount() {
+
   }
   readArticles = (id) => { // eslint-disable-line
     this.props.dispatch({
@@ -75,18 +85,17 @@ class ArticleInfo extends React.Component {
                     <Label as="a" color="blue" tag>{item.Label1}</Label>
                     <Label as="a" color="violet" tag>{item.Label2}</Label>
                   </div>
-                  <div>
-                    <Icon name="calendar" />
-                    <span>2018-01-02</span>
-                  </div>
                 </div>
-                <hr />
-                <div>{item.Brief}</div>
+                <Divider horizontal>2018-3-08</Divider>
+                <div className={styles.briefInfo}>{item.Brief}</div>
                 <Button
                   content="阅读全文"
+                  size="small"
                   color="black"
                   style={{
                     float: 'right',
+                    padding: 10,
+                    marginTop: 15,
                   }}
                   onClick={() => this.readArticles(index)}
                 />

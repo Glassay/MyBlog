@@ -39,6 +39,7 @@ const images = {
     'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-436683.png',
     'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-50854.jpg',
     'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-538213.png',
+    'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-610620.jpg',
   ],
 };
 

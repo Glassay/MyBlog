@@ -31,13 +31,12 @@ import React from 'react';
 import { Label } from 'semantic-ui-react';
 
 import colors from '../../utils/colors';
-import styles from './Label.less';
 import labels from '../../utils/labels';
 
 export default class Labels extends React.Component {
   render() {
     return (
-      <div className={styles.a}>
+      <div>
         {
           labels.map((item, index) => (
             <Label
