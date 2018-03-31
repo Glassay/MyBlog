@@ -39,7 +39,9 @@ import {
   Button,
   Divider,
 } from 'semantic-ui-react';
+import ScrollReveal from 'scrollreveal';
 
+// import sr from '../../components/ScrollReveal';
 import styles from './ArticleInfo.less';
 import '../../../node_modules/highlight.js/styles/atom-one-dark.css';
 import images from '../../utils/images';
@@ -54,7 +56,17 @@ class ArticleInfo extends React.Component {
     });
   }
   componentDidMount() {
-
+    const config = {
+      reset: false, // 滚动鼠标时，动画开关
+      origin: 'left', // 动画开始的方向
+      duration: 1000, // 动画持续时间
+      delay: 0, // 延迟
+      rotate: { x: 0, y: 0, z: 0 }, // 过度到0的初始角度
+      opacity: 0, // 初始透明度
+      scale: 0.2, //缩放
+      easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)', // 缓动'ease', 'ease-in-out'，'linear'
+    }
+    ScrollReveal().reveal(this.refs.box1, config)
   }
   readArticles = (id) => { // eslint-disable-line
     this.props.dispatch({
@@ -66,13 +78,13 @@ class ArticleInfo extends React.Component {
     const { Article, loading } = this.props;
     console.log('loading>>>>>', loading);
     return (
-      <Card.Group>
+      <div ref='box1'>
         {
           Article.data === undefined ? null : Article.data.map((item, index) => (
             <Card
               fluid
               key={index}
-              className="sr"
+              // ref='box1'
             >
               <Image
                 style={{ height: 250 }}
@@ -103,7 +115,7 @@ class ArticleInfo extends React.Component {
             </Card>
           ))
         }
-      </Card.Group>
+      </div>
     );
   }
 }

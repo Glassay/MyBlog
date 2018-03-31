@@ -36,6 +36,7 @@ import {
   Divider,
   Label,
 } from 'semantic-ui-react';
+import ScrollReveal from 'scrollreveal';
 import { connect } from 'dva';
 import '../../node_modules/highlight.js/styles/atom-one-dark.css';
 import styles from './ArticleShow.less';
@@ -48,6 +49,18 @@ class ArticleShow extends React.Component {
   }
   componentDidMount() {
     this.node.scrollIntoView();
+    const config = {
+      reset: false, // 滚动鼠标时，动画开关
+      origin: 'left', // 动画开始的方向
+      duration: 1500, // 动画持续时间
+      delay: 0, // 延迟
+      rotate: { x: 0, y: 0, z: 0 }, // 过度到0的初始角度
+      opacity: 0, // 初始透明度
+      scale: 0.2, //缩放
+      viewFactor: 0.2,
+      easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)', // 缓动'ease', 'ease-in-out'，'linear'
+    }
+    ScrollReveal().reveal(this.refs.box1, config)
   }
   render() {
     const { Article, keys } = this.props;
@@ -55,15 +68,17 @@ class ArticleShow extends React.Component {
       <div ref={node => (this.node = node)} className={styles.bgImage}>
         {
           Article.data === undefined ? null :
-          <Segment style={{ width: '80%', minHeight: '100vh', margin: 'auto', opacity: 0.9, backgroundColor: '#FBFBEA' }}>
-            <Header>{Article.data[keys].Title}</Header>
-            <div>
-              <Label as="a" color="blue" tag>{Article.data[keys].Label1}</Label>
-              <Label as="a" color="violet" tag>{Article.data[keys].Label2}</Label>
-            </div>
-            <Divider horizontal>2018-3-08</Divider>
-            <div dangerouslySetInnerHTML={{ __html: marked(Article.data[keys].Content) }} />
-          </Segment>
+          <div ref='box1'>
+            <Segment style={{ width: '80%', minHeight: '100vh', margin: 'auto', opacity: 0.9, backgroundColor: '#FBFBEA' }}>
+              <Header>{Article.data[keys].Title}</Header>
+              <div>
+                <Label as="a" color="blue" tag>{Article.data[keys].Label1}</Label>
+                <Label as="a" color="violet" tag>{Article.data[keys].Label2}</Label>
+              </div>
+              <Divider horizontal>2018-3-08</Divider>
+              <div dangerouslySetInnerHTML={{ __html: marked(Article.data[keys].Content) }} />
+            </Segment>
+          </div>
         }
       </div>
     );
