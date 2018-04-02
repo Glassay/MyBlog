@@ -68,7 +68,7 @@ class ArticleShow extends React.Component {
       <div ref={node => (this.node = node)} className={styles.bgImage}>
         {
           Article.data === undefined ? null :
-          <div ref='box1'>
+          <div ref="box1">
             <Segment style={{ width: '80%', minHeight: '100vh', margin: 'auto', opacity: 0.9, backgroundColor: '#FBFBEA' }}>
               <Header>{Article.data[keys].Title}</Header>
               <div>

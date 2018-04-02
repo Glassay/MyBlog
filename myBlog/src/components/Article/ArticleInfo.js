@@ -41,7 +41,6 @@ import {
 } from 'semantic-ui-react';
 import ScrollReveal from 'scrollreveal';
 
-// import sr from '../../components/ScrollReveal';
 import styles from './ArticleInfo.less';
 import '../../../node_modules/highlight.js/styles/atom-one-dark.css';
 import images from '../../utils/images';
@@ -78,7 +77,7 @@ class ArticleInfo extends React.Component {
     const { Article, loading } = this.props;
     console.log('loading>>>>>', loading);
     return (
-      <div ref='box1'>
+      <div ref="box1">
         {
           Article.data === undefined ? null : Article.data.map((item, index) => (
             <Card
