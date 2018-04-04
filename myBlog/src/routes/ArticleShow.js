@@ -38,12 +38,21 @@ import {
 } from 'semantic-ui-react';
 import ScrollReveal from 'scrollreveal';
 import { connect } from 'dva';
-import '../../node_modules/highlight.js/styles/atom-one-dark.css';
+// import '../../node_modules/highlight.js/styles/atom-one-dark.css';
+import '../utils/atom.less';
 import styles from './ArticleShow.less';
 
 class ArticleShow extends React.Component {
   componentWillMount() {
     marked.setOptions({
+      renderer: new marked.Renderer(),
+      gfm: true,
+      pedantic: true,
+      sanitize: true,
+      tables: true,
+      breaks: true,
+      smartLists: true,
+      smartypants: true,
       highlight: code => highlight.highlightAuto(code).value,
     });
   }
