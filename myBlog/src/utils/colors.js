@@ -30,7 +30,7 @@
 
 const colors = [
   'red', 'orange', 'yellow', 'olive', 'green', 'teal',
-  'blue', 'violet', 'purple', 'pink', 'brown', 'grey', 'black',
+  'blue', 'violet', 'purple', 'pink',
 ];
 
 export default colors;

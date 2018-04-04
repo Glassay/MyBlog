@@ -130,10 +130,10 @@ class BasicLayout extends Component {
                 <Grid.Column width={3}>
                   <Header inverted as="h4" content="不错的网站" />
                   <List link inverted>
-                    <List.Item as="a">Sitemap</List.Item>
-                    <List.Item as="a">Contact Us</List.Item>
-                    <List.Item as="a">Religious Ceremonies</List.Item>
-                    <List.Item as="a">Gazebo Plans</List.Item>
+                    <List.Item as="a" href="https://ant.design/index-cn" target="view_window">AntDesign</List.Item>
+                    <List.Item as="a" href="http://chuangzaoshi.com/" target="view_window">创造狮</List.Item>
+                    <List.Item as="a" href="https://stackoverflow.com/" target="view_window">stack overflow</List.Item>
+                    <List.Item as="a" href="http://www.zhangxinxu.com/" target="view_window">张鑫旭个人空间</List.Item>
                   </List>
                 </Grid.Column>
                 <Grid.Column width={3}>

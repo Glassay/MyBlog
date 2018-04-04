@@ -44,6 +44,7 @@ import ScrollReveal from 'scrollreveal';
 import styles from './ArticleInfo.less';
 import '../../../node_modules/highlight.js/styles/atom-one-dark.css';
 import images from '../../utils/images';
+import colors from '../../utils/colors';
 
 class ArticleInfo extends React.Component {
   componentWillMount() {
@@ -93,11 +94,11 @@ class ArticleInfo extends React.Component {
                 <Header>{item.Title}</Header>
                 <div className={styles.type}>
                   <div>
-                    <Label as="a" color="blue" tag>{item.Label1}</Label>
-                    <Label as="a" color="violet" tag>{item.Label2}</Label>
+                    <Label as="a" color={colors[Math.floor(Math.random() * colors.length)]} tag>{item.Label1}</Label>
+                    <Label as="a" color={colors[Math.floor(Math.random() * colors.length)]} tag>{item.Label2}</Label>
                   </div>
                 </div>
-                <Divider horizontal>2018-3-08</Divider>
+                <Divider horizontal>{item.Created.substring(0,10)}</Divider>
                 <div className={styles.briefInfo}>{item.Brief}</div>
                 <Button
                   content="阅读全文"

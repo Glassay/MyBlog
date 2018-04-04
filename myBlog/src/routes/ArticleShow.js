@@ -38,9 +38,10 @@ import {
 } from 'semantic-ui-react';
 import ScrollReveal from 'scrollreveal';
 import { connect } from 'dva';
-// import '../../node_modules/highlight.js/styles/atom-one-dark.css';
+
 import '../utils/atom.less';
 import styles from './ArticleShow.less';
+import colors from '../utils/colors';
 
 class ArticleShow extends React.Component {
   componentWillMount() {
@@ -78,13 +79,13 @@ class ArticleShow extends React.Component {
         {
           Article.data === undefined ? null :
           <div ref="box1">
-            <Segment style={{ width: '80%', minHeight: '100vh', margin: 'auto', opacity: 0.9, backgroundColor: '#FBFBEA' }}>
+            <Segment style={{ width: '80%', minHeight: '100vh', margin: 'auto', opacity: 0.95, backgroundColor: '#FBFBEA', paddingBottom: 100 }}>
               <Header>{Article.data[keys].Title}</Header>
               <div>
-                <Label as="a" color="blue" tag>{Article.data[keys].Label1}</Label>
-                <Label as="a" color="violet" tag>{Article.data[keys].Label2}</Label>
+                <Label as="a" color={colors[Math.floor(Math.random() * colors.length)]} tag>{Article.data[keys].Label1}</Label>
+                <Label as="a" color={colors[Math.floor(Math.random() * colors.length)]} tag>{Article.data[keys].Label2}</Label>
               </div>
-              <Divider horizontal>2018-3-08</Divider>
+              <Divider horizontal>{Article.data[keys].Created.substring(0,10)}</Divider>
               <div dangerouslySetInnerHTML={{ __html: marked(Article.data[keys].Content) }} />
             </Segment>
           </div>
