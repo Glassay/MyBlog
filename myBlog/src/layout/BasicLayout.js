@@ -41,8 +41,8 @@ import {
 } from 'semantic-ui-react';
 import { connect } from 'dva';
 import { Pagination } from 'antd';
-import ScrollReveal from 'scrollreveal';
 
+import 'aos/dist/aos.css';
 import 'semantic-ui-css/semantic.min.css';
 import styles from './BasicLayout.less';
 import Introduce from '../components/Introduce';
@@ -64,34 +64,22 @@ const FixedMenu = () => (
 );
 
 class BasicLayout extends Component {
+  constructor() {
+    super();
+    this.state = {
+      visible: false,
+    }
+  }
   componentDidMount() {
     this.props.dispatch({
       type: 'article/showArticle',
     });
-
-    const config = {
-      reset: false, // 滚动鼠标时，动画开关
-      origin: 'left', // 动画开始的方向
-      duration: 1000, // 动画持续时间
-      delay: 0, // 延迟
-      rotate: { x: 0, y: 0, z: 0 }, // 过度到0的初始角度
-      opacity: 0, // 初始透明度
-      scale: 0.2, //缩放
-      easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)', // 缓动'ease', 'ease-in-out'，'linear'
-    }
-    ScrollReveal().reveal(this.refs.box1, config)
   }
 
   onShow = () => { // eslint-disable-line
-    this.props.dispatch({
-      type: 'menu/showFixedMenu',
-    });
-  }
-
-  onHide = () => { // eslint-disable-line
-    this.props.dispatch({
-      type: 'menu/hideFixedMenu',
-    });
+    this.setState({
+      visible: !this.state.visible,
+    })
   }
 
   readArticle = (id) => {
@@ -101,14 +89,12 @@ class BasicLayout extends Component {
     })
   }
   render() {
-    const { visible, Article } = this.props;
+    const { Article } = this.props;
     return (
       <div>
-        { visible ? <FixedMenu /> : null }
+        { this.state.visible ? <FixedMenu /> : null }
         <Visibility
           onBottomPassed={this.onShow}
-          onBottomVisible={this.onHide}
-          // once={false}
         >
           <div
             className={styles.bgImage}
@@ -140,7 +126,6 @@ class BasicLayout extends Component {
           <Grid container stackable>
             <Grid.Row>
               <Grid.Column width={10}>
-                <div ref="box1">
                 {
                   Article.data === undefined ? null : Article.data.map((item, index) => (
                     <div className={styles.articleInfo} key={index}>
@@ -157,7 +142,6 @@ class BasicLayout extends Component {
                     </div>
                   ))
                 }
-                </div>
                 <Pagination
                   className="ant-table-pagination"
                   total={10}
@@ -190,15 +174,15 @@ class BasicLayout extends Component {
                 <Grid.Column width={3}>
                   <Header inverted as="h4" content="友情链接" />
                   <List link inverted>
-                    <List.Item as="a">Banana Pre-Order</List.Item>
-                    <List.Item as="a">DNA FAQ</List.Item>
-                    <List.Item as="a">How To Access</List.Item>
-                    <List.Item as="a">Favorite X-Men</List.Item>
+                    <List.Item as="a">1</List.Item>
+                    <List.Item as="a">2</List.Item>
+                    <List.Item as="a">3</List.Item>
+                    <List.Item as="a">4</List.Item>
                   </List>
                 </Grid.Column>
                 <Grid.Column width={7}>
-                  <Header as="h4" inverted>Footer Header</Header>
-                  <p>Extra space for a call to action inside the foote</p>
+                  <Header as="h4" inverted>Power By</Header>
+                  <p>Copyright ©2018 Created by Jifeng Cheng</p>
                 </Grid.Column>
               </Grid.Row>
             </Grid>

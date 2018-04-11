@@ -36,9 +36,10 @@ import {
   Divider,
   Label,
 } from 'semantic-ui-react';
-import ScrollReveal from 'scrollreveal';
+import AOS from 'aos';
 import { connect } from 'dva';
 
+import 'aos/dist/aos.css';
 import '../utils/atom.less';
 import styles from './ArticleShow.less';
 import colors from '../utils/colors';
@@ -58,19 +59,10 @@ class ArticleShow extends React.Component {
     });
   }
   componentDidMount() {
+    AOS.init({
+      duration : 1000
+    })
     this.node.scrollIntoView();
-    const config = {
-      reset: false, // 滚动鼠标时，动画开关
-      origin: 'left', // 动画开始的方向
-      duration: 1500, // 动画持续时间
-      delay: 0, // 延迟
-      rotate: { x: 0, y: 0, z: 0 }, // 过度到0的初始角度
-      opacity: 0, // 初始透明度
-      scale: 0.2, //缩放
-      viewFactor: 0.2,
-      easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)', // 缓动'ease', 'ease-in-out'，'linear'
-    }
-    ScrollReveal().reveal(this.refs.box1, config)
   }
   render() {
     const { Article, keys } = this.props;
@@ -78,7 +70,7 @@ class ArticleShow extends React.Component {
       <div ref={node => (this.node = node)} className={styles.bgImage}>
         {
           Article.data === undefined ? null :
-          <div ref="box1">
+          <div data-aos='zoom-in'>
             <Segment style={{ width: '80%', minHeight: '100vh', margin: 'auto', opacity: 0.95, backgroundColor: '#FBFBEA', paddingBottom: 100 }}>
               <Header>{Article.data[keys].Title}</Header>
               <div>
