@@ -52,7 +52,10 @@ export default {
         type: 'readArticle',
         payload: payload, // eslint-disable-line
       });
-      yield put(routerRedux.push('/article'));
+      yield put(routerRedux.push({
+        pathname: '/article',
+        query: { payload }
+      }));
     },
   },
 

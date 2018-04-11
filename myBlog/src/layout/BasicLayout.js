@@ -40,6 +40,9 @@ import {
   Input,
 } from 'semantic-ui-react';
 import { connect } from 'dva';
+import { Pagination } from 'antd';
+import ScrollReveal from 'scrollreveal';
+
 import 'semantic-ui-css/semantic.min.css';
 import styles from './BasicLayout.less';
 import Introduce from '../components/Introduce';
@@ -61,6 +64,24 @@ const FixedMenu = () => (
 );
 
 class BasicLayout extends Component {
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'article/showArticle',
+    });
+
+    const config = {
+      reset: false, // 滚动鼠标时，动画开关
+      origin: 'left', // 动画开始的方向
+      duration: 1000, // 动画持续时间
+      delay: 0, // 延迟
+      rotate: { x: 0, y: 0, z: 0 }, // 过度到0的初始角度
+      opacity: 0, // 初始透明度
+      scale: 0.2, //缩放
+      easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)', // 缓动'ease', 'ease-in-out'，'linear'
+    }
+    ScrollReveal().reveal(this.refs.box1, config)
+  }
+
   onShow = () => { // eslint-disable-line
     this.props.dispatch({
       type: 'menu/showFixedMenu',
@@ -73,15 +94,21 @@ class BasicLayout extends Component {
     });
   }
 
+  readArticle = (id) => {
+    this.props.dispatch({
+      type: 'article/readMore',
+      payload: id,
+    })
+  }
   render() {
-    const { visible } = this.props;
+    const { visible, Article } = this.props;
     return (
       <div>
         { visible ? <FixedMenu /> : null }
         <Visibility
           onBottomPassed={this.onShow}
           onBottomVisible={this.onHide}
-          once={false}
+          // once={false}
         >
           <div
             className={styles.bgImage}
@@ -113,7 +140,31 @@ class BasicLayout extends Component {
           <Grid container stackable>
             <Grid.Row>
               <Grid.Column width={10}>
-                <ArticleInfo />
+                <div ref="box1">
+                {
+                  Article.data === undefined ? null : Article.data.map((item, index) => (
+                    <div className={styles.articleInfo} key={index}>
+                      <ArticleInfo
+                        index={index}
+                        Id={item.Id}
+                        Title={item.Title}
+                        Label1={item.Label1}
+                        Label2={item.Label2}
+                        Brief={item.Brief}
+                        Created={item.Created}
+                        ArticleId={(id) => this.readArticle(id)}
+                      />
+                    </div>
+                  ))
+                }
+                </div>
+                <Pagination
+                  className="ant-table-pagination"
+                  total={10}
+                  pageSize={5}
+                  current={1}
+                  // onChange={pageChangeHandler}
+                />
               </Grid.Column>
               <Grid.Column floated="right" width={4}>
                 <Introduce />
@@ -160,5 +211,6 @@ class BasicLayout extends Component {
 
 export default connect(state => ({
   visible: state.menu.visible,
+  Article: state.article.Article,
 }))(BasicLayout);
 

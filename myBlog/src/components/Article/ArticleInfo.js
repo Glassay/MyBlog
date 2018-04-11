@@ -30,97 +30,73 @@
 import React from 'react';
 import marked from 'marked';
 import highlight from 'highlight.js';
-import { connect } from 'dva';
 import {
   Card,
   Header,
   Image,
-  Label,
   Button,
   Divider,
 } from 'semantic-ui-react';
-import ScrollReveal from 'scrollreveal';
+// import ScrollReveal from 'scrollreveal';
 
 import styles from './ArticleInfo.less';
 import '../../../node_modules/highlight.js/styles/atom-one-dark.css';
 import images from '../../utils/images';
-import colors from '../../utils/colors';
 
 class ArticleInfo extends React.Component {
   componentWillMount() {
-    this.props.dispatch({
-      type: 'article/showArticle',
-    });
     marked.setOptions({
       highlight: code => highlight.highlightAuto(code).value,
     });
   }
   componentDidMount() {
-    const config = {
-      reset: false, // 滚动鼠标时，动画开关
-      origin: 'left', // 动画开始的方向
-      duration: 1000, // 动画持续时间
-      delay: 0, // 延迟
-      rotate: { x: 0, y: 0, z: 0 }, // 过度到0的初始角度
-      opacity: 0, // 初始透明度
-      scale: 0.2, //缩放
-      easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)', // 缓动'ease', 'ease-in-out'，'linear'
-    }
-    ScrollReveal().reveal(this.refs.box1, config)
+    // const config = {
+    //   reset: false, // 滚动鼠标时，动画开关
+    //   origin: 'left', // 动画开始的方向
+    //   duration: 1000, // 动画持续时间
+    //   delay: 0, // 延迟
+    //   rotate: { x: 0, y: 0, z: 0 }, // 过度到0的初始角度
+    //   opacity: 0, // 初始透明度
+    //   scale: 0.2, //缩放
+    //   easing: 'cubic-bezier(0.6, 0.2, 0.1, 1)', // 缓动'ease', 'ease-in-out'，'linear'
+    // }
+    // ScrollReveal().reveal(this.refs.box1, config)
   }
-  readArticles = (id) => { // eslint-disable-line
-    this.props.dispatch({
-      type: 'article/readMore',
-      payload: id,
-    });
+
+  handleArticleID = (id) => {
+    this.props.ArticleId(id)
   }
+
   render() {
-    const { Article, loading } = this.props;
-    console.log('loading>>>>>', loading);
     return (
-      <div ref="box1">
-        {
-          Article.data === undefined ? null : Article.data.map((item, index) => (
-            <Card
-              fluid
-              key={index}
-              // ref='box1'
-            >
-              <Image
-                style={{ height: 250 }}
-                src={images.headImage[Math.floor(Math.random() * images.headImage.length)]}
-              />
-              <Card.Content>
-                <Header>{item.Title}</Header>
-                <div className={styles.type}>
-                  <div>
-                    <Label as="a" color={colors[Math.floor(Math.random() * colors.length)]} tag>{item.Label1}</Label>
-                    <Label as="a" color={colors[Math.floor(Math.random() * colors.length)]} tag>{item.Label2}</Label>
-                  </div>
-                </div>
-                <Divider horizontal>{item.Created.substring(0,10)}</Divider>
-                <div className={styles.briefInfo}>{item.Brief}</div>
-                <Button
-                  content="阅读全文"
-                  size="small"
-                  color="black"
-                  style={{
-                    float: 'right',
-                    padding: 10,
-                    marginTop: 15,
-                  }}
-                  onClick={() => this.readArticles(index)}
-                />
-              </Card.Content>
-            </Card>
-          ))
-        }
-      </div>
+      <Card
+        fluid
+        key={this.props.index}
+        // ref='box1'
+      >
+        <Image
+          style={{ height: 250 }}
+          src={images.headImage[Math.floor(Math.random() * images.headImage.length)]}
+        />
+        <Card.Content>
+          <Header>{this.props.Title}</Header>
+          <Divider horizontal>{this.props.Created.substring(0,10)}</Divider>
+          <div className={styles.briefInfo}>{this.props.Brief}</div>
+          <Button
+            content="阅读全文"
+            size="small"
+            color="black"
+            style={{
+              float: 'right',
+              padding: 10,
+              marginTop: 15,
+            }}
+            onClick={() => this.handleArticleID(this.props.index)}
+          />
+        </Card.Content>
+      </Card>
     );
   }
 }
 
-export default connect(state => ({
-  Article: state.article.Article,
-  loading: state.loading.models.article,
-}))(ArticleInfo);
+export default ArticleInfo;
