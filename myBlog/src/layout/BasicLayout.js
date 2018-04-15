@@ -181,8 +181,8 @@ class BasicLayout extends Component {
                   </List>
                 </Grid.Column>
                 <Grid.Column width={7}>
-                  <Header as="h4" inverted>Power By</Header>
-                  <p>Copyright ©2018 Created by Jifeng Cheng</p>
+                  <Header as="h4" inverted>版权</Header>
+                  <p>Copyright ©2018 Designed by Jifeng Cheng</p>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
