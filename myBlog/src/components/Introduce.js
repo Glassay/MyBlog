@@ -30,6 +30,8 @@
 import React from 'react';
 import { Card, Image, Icon } from 'semantic-ui-react';
 
+import styles from './Introduce.less';
+
 class Indroduce extends React.Component {
   render() {
     return (
@@ -41,17 +43,11 @@ class Indroduce extends React.Component {
           <Card.Meta>
             缘,妙不可言！
           </Card.Meta>
-          <Card.Content
-            style={{ marginTop: 10 }}
-          >
-            <Icon className="mail outline" />
-            <span>chengjifeng0215@163.com</span>
-          </Card.Content>
-          <Card.Content
-            style={{ marginTop: 10 }}
-          >
-            <Icon className="google" />
-            <span>chengjifeng0215@gmail.com</span>
+          <Card.Content style={{ marginTop: 10 }}>
+            <div className={styles.info}>
+              <Icon className="google" />
+              <em className={styles.email}>chengjifeng0215@gmail.com</em>
+            </div>
           </Card.Content>
         </Card.Content>
       </Card>
