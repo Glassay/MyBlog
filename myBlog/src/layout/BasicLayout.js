@@ -40,7 +40,6 @@ import {
   Input,
 } from 'semantic-ui-react';
 import { connect } from 'dva';
-import { Pagination } from 'antd';
 
 import 'aos/dist/aos.css';
 import 'semantic-ui-css/semantic.min.css';
@@ -142,13 +141,6 @@ class BasicLayout extends Component {
                     </div>
                   ))
                 }
-                <Pagination
-                  className="ant-table-pagination"
-                  total={10}
-                  pageSize={5}
-                  current={1}
-                  // onChange={pageChangeHandler}
-                />
               </Grid.Column>
               <Grid.Column floated="right" width={4}>
                 <Introduce />

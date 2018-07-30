@@ -7,7 +7,6 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "antd": "^3.3.3",
     "aos": "^2.2.0",
     "axios": "^0.18.0",
     "babel-runtime": "^6.9.2",
