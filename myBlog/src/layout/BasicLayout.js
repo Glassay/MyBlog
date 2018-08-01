@@ -38,8 +38,10 @@ import {
   Visibility,
   Menu,
   Input,
+  Icon,
 } from 'semantic-ui-react';
 import { connect } from 'dva';
+import { Switch, Route } from 'dva/router';
 
 import 'aos/dist/aos.css';
 import 'semantic-ui-css/semantic.min.css';
@@ -52,7 +54,7 @@ import Tag from '../components/Tag';
 const FixedMenu = () => (
   <Menu fixed="top" size="large" inverted pointing>
     <Container>
-      <Menu.Item as="a" active>首页</Menu.Item>
+      <Menu.Item as="a">首页</Menu.Item>
       <Menu.Item as="a">留言板</Menu.Item>
       <Menu.Menu position="right">
         <Input icon="search" placeholder="Search..." />
@@ -91,64 +93,78 @@ class BasicLayout extends Component {
     return (
       <div>
         { this.state.visible ? <FixedMenu /> : null }
-        <Visibility
-          onBottomPassed={this.onShow}
-        >
-          <div
-            className={styles.bgImage}
-          >
-            <Header
-              as="h1"
-              textAlign="center"
-              content="Cease to struggle and you cease to live"
-              inverted
-              style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: 0, marginTop: '3em' }}
-            />
-            <Header
-              as="h2"
-              textAlign="center"
-              content="Welcome to my Blog!"
-              inverted
-            />
-            <Container
-              textAlign="center"
-            >
-              <Button color="black" target="_blank" href="https://github.com/Glassay">Github</Button>
-              <Button color="black" target="_blank" href="mailto:chengjifeng0215@163.com">e-mail</Button>
-            </Container>
-          </div>
-        </Visibility>
-        <h4 className="ui horizontal divider header"><i className="tag icon" /> Article </h4>
-
-        <Segment vertical>
-          <Grid container stackable>
-            <Grid.Row>
-              <Grid.Column width={10}>
-                {
-                  Article.data === undefined ? null : Article.data.map((item, index) => (
-                    <div className={styles.articleInfo} key={index}>
-                      <ArticleInfo
-                        index={index}
-                        Id={item.Id}
-                        Title={item.Title}
-                        Label1={item.Label1}
-                        Label2={item.Label2}
-                        Brief={item.Brief}
-                        Created={item.Created}
-                        ArticleId={(id) => this.readArticle(id)}
-                      />
-                    </div>
-                  ))
-                }
-              </Grid.Column>
-              <Grid.Column floated="right" width={4}>
-                <Introduce />
-                <Pigeonhole />
-                <Tag />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Segment>
+        <Switch>
+          <Route
+            path="/"
+            render={() => (
+              <div>
+                <Visibility
+                  onBottomPassed={this.onShow}
+                >
+                  <div
+                    className={styles.bgImage}
+                  >
+                    <Header
+                      as="h1"
+                      textAlign="center"
+                      content="Cease to struggle and you cease to live"
+                      inverted
+                      style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: 0, marginTop: '3em' }}
+                    />
+                    <Header
+                      as="h2"
+                      textAlign="center"
+                      content="Welcome to my Blog!"
+                      inverted
+                    />
+                    <Container
+                      textAlign="center"
+                    >
+                      <Button style={{ marginRight: "15px" }} inverted circular color="black" icon target="_blank" href="https://github.com/Glassay">
+                        <Icon color="white" name="github" />
+                      </Button>
+                      <Button inverted circular color='black' icon target="_blank" href="mailto:chengjifeng0215@163.com">
+                        <Icon color="white" name="mail" />
+                      </Button>
+                    </Container>
+                  </div>
+                </Visibility>
+                <h4 className="ui horizontal divider header"><i className="tag icon" /> Article </h4>
+    
+                <Segment vertical>
+                  <Grid container stackable>
+                    <Grid.Row>
+                      <Grid.Column width={10}>
+                        {
+                          Article.data === undefined ? null : Article.data.map((item, index) => (
+                            <div className={styles.articleInfo} key={index}>
+                              <ArticleInfo
+                                index={index}
+                                Id={item.Id}
+                                Title={item.Title}
+                                Label1={item.Label1}
+                                Label2={item.Label2}
+                                Brief={item.Brief}
+                                Created={item.Created}
+                                ArticleId={(id) => this.readArticle(id)}
+                              />
+                            </div>
+                          ))
+                        }
+                      </Grid.Column>
+                      <Grid.Column floated="right" width={4}>
+                        <Introduce />
+                        <Pigeonhole />
+                        <Tag />
+                      </Grid.Column>
+                    </Grid.Row>
+                  </Grid>
+                </Segment>
+              </div>
+            )}
+          />
+          {/* <Route/> */}
+        </Switch>
         <Segment inverted vertical style={{ padding: '5em 0em' }}>
           <Container>
             <Grid divided inverted stackable>
