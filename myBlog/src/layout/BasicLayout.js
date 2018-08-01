@@ -54,7 +54,6 @@ const FixedMenu = () => (
     <Container>
       <Menu.Item as="a" active>首页</Menu.Item>
       <Menu.Item as="a">留言板</Menu.Item>
-      <Menu.Item as="a">Github</Menu.Item>
       <Menu.Menu position="right">
         <Input icon="search" placeholder="Search..." />
       </Menu.Menu>
@@ -159,11 +158,10 @@ class BasicLayout extends Component {
                   <List link inverted>
                     <List.Item as="a" href="https://ant.design/index-cn" target="view_window">AntDesign</List.Item>
                     <List.Item as="a" href="http://chuangzaoshi.com/" target="view_window">创造狮</List.Item>
-                    <List.Item as="a" href="https://stackoverflow.com/" target="view_window">stack overflow</List.Item>
                     <List.Item as="a" href="http://www.zhangxinxu.com/" target="view_window">张鑫旭个人空间</List.Item>
                   </List>
                 </Grid.Column>
-                <Grid.Column width={3}>
+                {/* <Grid.Column width={3}>
                   <Header inverted as="h4" content="友情链接" />
                   <List link inverted>
                     <List.Item as="a">1</List.Item>
@@ -171,10 +169,10 @@ class BasicLayout extends Component {
                     <List.Item as="a">3</List.Item>
                     <List.Item as="a">4</List.Item>
                   </List>
-                </Grid.Column>
-                <Grid.Column width={7}>
-                  <Header as="h4" inverted>版权</Header>
-                  <p>Copyright ©2018 Designed by Jifeng Cheng</p>
+                </Grid.Column> */}
+                <Grid.Column width={10}>
+                  {/* <Header as="h4" inverted>版权</Header> */}
+                  <p>Copyright ©2018 by Jifeng Cheng</p>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
