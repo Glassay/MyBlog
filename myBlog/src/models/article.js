@@ -53,7 +53,7 @@ export default {
         payload: payload, // eslint-disable-line
       });
       yield put(routerRedux.push({
-        pathname: '/article',
+        pathname: `/article/${payload}`,
         query: { payload }
       }));
     },

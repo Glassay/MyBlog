@@ -28,8 +28,6 @@
  */
 
 import React from 'react';
-import marked from 'marked';
-import highlight from 'highlight.js';
 import {
   Card,
   Header,
@@ -45,14 +43,22 @@ import '../../../node_modules/highlight.js/styles/atom-one-dark.css';
 import images from '../../utils/images';
 
 class ArticleInfo extends React.Component {
-  componentWillMount() {
-    marked.setOptions({
-      highlight: code => highlight.highlightAuto(code).value,
-    });
+  constructor() {
+    super();
+    this.state = {
+      headImage: ''
+    }
   }
   componentDidMount() {
     AOS.init({
       duration : 500
+    })
+    this.randomHeadImage()
+  }
+
+  randomHeadImage = () => {
+    this.setState({
+      headImage: images.headImage[Math.floor(Math.random() * images.headImage.length)]
     })
   }
 
@@ -70,7 +76,7 @@ class ArticleInfo extends React.Component {
       >
         <Image
           style={{ height: 250 }}
-          src={images.headImage[Math.floor(Math.random() * images.headImage.length)]}
+          src={this.state.headImage}
         />
         <Card.Content>
           <Header>{this.props.Title}</Header>

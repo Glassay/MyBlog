@@ -45,7 +45,8 @@ import styles from './ArticleShow.less';
 import colors from '../utils/colors';
 
 class ArticleShow extends React.Component {
-  componentWillMount() {
+  constructor() {
+    super();
     marked.setOptions({
       renderer: new marked.Renderer(),
       gfm: true,
