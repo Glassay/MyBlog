@@ -121,10 +121,10 @@ class BasicLayout extends Component {
                       textAlign="center"
                     >
                       <Button style={{ marginRight: "15px" }} inverted circular color="black" icon target="_blank" href="https://github.com/Glassay">
-                        <Icon color="white" name="github" />
+                        <Icon name="github" />
                       </Button>
                       <Button inverted circular color='black' icon target="_blank" href="mailto:chengjifeng0215@163.com">
-                        <Icon color="white" name="mail" />
+                        <Icon name="mail" />
                       </Button>
                     </Container>
                   </div>
