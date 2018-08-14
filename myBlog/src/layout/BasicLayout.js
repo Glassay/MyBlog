@@ -163,9 +163,9 @@ class BasicLayout extends Component {
                 <Grid.Column width={3}>
                   <Header inverted as="h4" content="不错的网站" />
                   <List link inverted>
-                    <List.Item as="a" href="https://ant.design/index-cn" target="view_window">AntDesign</List.Item>
+                    <List.Item as="a" href="https://love2.io/" target="view_window">技术文档分享</List.Item>
                     <List.Item as="a" href="http://chuangzaoshi.com/" target="view_window">创造狮</List.Item>
-                    <List.Item as="a" href="http://www.zhangxinxu.com/" target="view_window">张鑫旭个人空间</List.Item>
+                    <List.Item as="a" href="https://uirush.com/page/design" target="view_window">前端资源导航</List.Item>
                   </List>
                 </Grid.Column>
                 {/* <Grid.Column width={3}>
@@ -178,8 +178,9 @@ class BasicLayout extends Component {
                   </List>
                 </Grid.Column> */}
                 <Grid.Column width={10}>
-                  {/* <Header as="h4" inverted>版权</Header> */}
-                  <p>Copyright ©2018 by Jifeng Cheng</p>
+                  <Header as="h4" inverted>版权</Header>
+                  <p>豫ICP备18029089号-1</p>
+                  <p>Design ©2018 by Jifeng Cheng</p>
                 </Grid.Column>
               </Grid.Row>
             </Grid>

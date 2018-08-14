@@ -8,7 +8,7 @@ function RouterConfig({ history }) {
     <Router history={history}>
       <Switch>
         <Route path="/" exact component={BasicLayout} />
-        <Route path="/article/:query" component={ArticleShow} />
+        <Route path="/:id" component={ArticleShow} />
       </Switch>
     </Router>
   );

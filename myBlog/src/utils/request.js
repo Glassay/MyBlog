@@ -66,14 +66,12 @@ const fetch = (options) => {
 
 export default function request(options) {
   return fetch(options).then((response) => {
-    console.log('options: ', options, 'response: ', response);
     if (response.status === HttpStatus.OK) {
       return response.data;
     }
     throw { response } // eslint-disable-line
   }).catch((error) => {
     const { response } = error;
-    console.log('request error: ', error);
     let message, status // eslint-disable-line
     if (response) {
       status = response.status;

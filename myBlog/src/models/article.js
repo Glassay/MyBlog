@@ -41,7 +41,6 @@ export default {
   effects: {
     *showArticle({ payload }, { put, call }) {
       const response = yield call(getArticle);
-      console.log('rsponse>>>>>>', response);
       yield put({
         type: 'getArticles',
         payload: response,

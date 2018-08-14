@@ -29,17 +29,14 @@
 
 const images = {
   headImage: [
-    'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-543828.jpg',
-    'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-267050.jpg',
-    'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-16295.jpg',
-    'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-267055.png',
+    'http://p8pobg42e.bkt.clouddn.com/blog/image/wallhaven-16295.jpg',
+    'http://p8pobg42e.bkt.clouddn.com/blog/image/wallhaven-267050.jpg',
+    'http://p8pobg42e.bkt.clouddn.com/blog/image/wallhaven-267055.png',
+    'http://p8pobg42e.bkt.clouddn.com/blog/image/wallhaven-543828.jpg',
   ],
   detailsImage: [
     'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-290948.jpg',
     'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-436683.png',
-    'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-50854.jpg',
-    'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-538213.png',
-    'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-610620.jpg',
   ],
 };
 
